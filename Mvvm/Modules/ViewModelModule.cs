@@ -4,18 +4,16 @@ using Module = Autofac.Module;
 
 namespace Glitonea.Mvvm
 {
-    internal class ViewModelModule : Module
+    internal class ViewModelModule : GlitoneaModule
     {
-        private readonly Assembly _callingAssembly;
-        
-        internal ViewModelModule(Assembly callingAssembly)
+        public ViewModelModule(Assembly callingAssembly) 
+            : base(callingAssembly)
         {
-            _callingAssembly = callingAssembly;
         }
         
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterAssemblyTypes(_callingAssembly)
+            builder.RegisterAssemblyTypes(CallingAssembly)
                 .Where(type => type.IsAssignableTo<ViewModelBase>())
                 .AsSelf()
                 .InstancePerDependency();

@@ -18,10 +18,13 @@ namespace Glitonea
             if (_initialized)
                 throw new InvalidOperationException("Attempt to initialize Glitonea twice.");
 
+            var callingAssembly = Assembly.GetCallingAssembly();
+            
             ContainerBuilder = new ContainerBuilder();
-            ContainerBuilder.RegisterModule(new ViewModelModule(Assembly.GetCallingAssembly()));
+            ContainerBuilder.RegisterModule(new ViewModelModule(callingAssembly));
+            ContainerBuilder.RegisterModule(new ServiceModule(callingAssembly));
+            
             Container = ContainerBuilder.Build();
-
             ViewModelResolver.Instance.Initialize(Container);
 
             _initialized = true;
