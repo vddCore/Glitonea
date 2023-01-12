@@ -22,7 +22,7 @@ namespace Glitonea
             }
         }
 
-        private void CenterScreen()
+        protected void CenterScreen()
         {
             var screen = Screens.ScreenFromVisual(this);
 
@@ -32,7 +32,7 @@ namespace Glitonea
             );
         }
 
-        private void CenterOwner()
+        protected void CenterOwner()
         {
             var ownerPosition = ((Window)Owner)!.Position;
             var ownerSize = Owner.Bounds.Size;
