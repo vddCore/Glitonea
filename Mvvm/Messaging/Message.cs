@@ -53,7 +53,7 @@ namespace Glitonea.Mvvm.Messaging
             {
                 if (kvp.Value.ContainsKey(t))
                 {
-                    kvp.Value[t].Method.Invoke(kvp.Key, new[] { Activator.CreateInstance(t, new object[] { }) });
+                    kvp.Value[t].Method.Invoke(kvp.Key, new[] { message });
                 }
             }
         }
@@ -66,7 +66,7 @@ namespace Glitonea.Mvvm.Messaging
             {
                 if (kvp.Value.ContainsKey(t))
                 {
-                    kvp.Value[t].Method.Invoke(kvp.Key, new[] { Activator.CreateInstance(t, new object[] { }) });
+                    kvp.Value[t].Method.Invoke(kvp.Key, new[] { message });
                 }
             }
         }

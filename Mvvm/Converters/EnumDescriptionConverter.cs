@@ -16,10 +16,10 @@ namespace Glitonea.Mvvm.Converters
             }
             throw new ArgumentException("Convert:Value must be an enum.");
         }
-    
+
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if(value is EnumDescription enumDescription)
+            if (value is EnumDescription enumDescription)
             {
                 return enumDescription.Value;
             }
