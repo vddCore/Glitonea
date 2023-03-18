@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Glitonea.Mvvm.Messaging
 {
-    public class Message
+    public abstract record Message
     {
         private static Dictionary<object, Dictionary<Type, MulticastDelegate>> _recipients = new();
 
@@ -49,7 +49,9 @@ namespace Glitonea.Mvvm.Messaging
         {
             var t = message.GetType();
 
-            foreach (var kvp in _recipients)
+            var invocationList = new Dictionary<object, Dictionary<Type, MulticastDelegate>>(_recipients);
+            
+            foreach (var kvp in invocationList)
             {
                 if (kvp.Value.ContainsKey(t))
                 {

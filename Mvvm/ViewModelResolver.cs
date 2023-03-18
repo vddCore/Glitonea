@@ -18,7 +18,7 @@ namespace Glitonea.Mvvm
         public T Resolve<T>() where T: ViewModelBase
         {
             if (_container == null)
-                throw new InvalidOperationException("Resolver not initialized yet.");
+                throw new InvalidOperationException("ViewModel esolver not initialized yet.");
 
             return _container.Resolve<T>();
         }

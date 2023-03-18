@@ -17,6 +17,11 @@ namespace Glitonea.Mvvm
                 .Where(type => type.IsAssignableTo<ViewModelBase>())
                 .AsSelf()
                 .InstancePerDependency();
+
+            builder.RegisterAssemblyTypes(CallingAssembly)
+                .Where(type => type.IsAssignableTo<SingleInstanceViewModelBase>())
+                .AsSelf()
+                .SingleInstance();
         }
     }
 }
