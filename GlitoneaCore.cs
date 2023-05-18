@@ -27,6 +27,7 @@ namespace Glitonea
             
             Container = ContainerBuilder.Build();
             ViewModelResolver.Instance.Initialize(Container);
+            ServiceResolver.Instance.Initialize(Container);
 
             _initialized = true;
         }
