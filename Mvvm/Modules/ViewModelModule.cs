@@ -1,8 +1,7 @@
 ﻿using System.Reflection;
 using Autofac;
-using Module = Autofac.Module;
 
-namespace Glitonea.Mvvm
+namespace Glitonea.Mvvm.Modules
 {
     internal class ViewModelModule : GlitoneaModule
     {

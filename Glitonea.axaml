@@ -4,4 +4,6 @@
     <Styles.Resources>
         <converters:EnumDescriptionConverter x:Key="EnumDescriptionConverter" />
     </Styles.Resources>
+    
+    <StyleInclude Source="avares://Glitonea/Controls/FluentWindow.axaml" />
 </Styles>

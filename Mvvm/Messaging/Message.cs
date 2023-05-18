@@ -53,9 +53,9 @@ namespace Glitonea.Mvvm.Messaging
             
             foreach (var kvp in invocationList)
             {
-                if (kvp.Value.ContainsKey(t))
+                if (kvp.Value.TryGetValue(t, out var value))
                 {
-                    kvp.Value[t].Method.Invoke(kvp.Key, new[] { message });
+                    value.Method.Invoke(kvp.Key, new[] { message });
                 }
             }
         }
@@ -66,9 +66,9 @@ namespace Glitonea.Mvvm.Messaging
 
             foreach (var kvp in _recipients.Where(x => subscriberType.IsAssignableFrom(x.GetType())))
             {
-                if (kvp.Value.ContainsKey(t))
+                if (kvp.Value.TryGetValue(t, out var value))
                 {
-                    kvp.Value[t].Method.Invoke(kvp.Key, new[] { message });
+                    value.Method.Invoke(kvp.Key, new[] { message });
                 }
             }
         }

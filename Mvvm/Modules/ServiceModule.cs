@@ -1,7 +1,7 @@
 using System.Reflection;
 using Autofac;
 
-namespace Glitonea.Mvvm
+namespace Glitonea.Mvvm.Modules
 {
     internal class ServiceModule : GlitoneaModule 
     {

@@ -1,0 +1,78 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:baseControls="clr-namespace:Glitonea.Controls">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <baseControls:FluentWindow />
+        </Border>
+    </Design.PreviewWith>
+
+    <Style Selector="baseControls|FluentWindow">
+        <Setter Property="Background" Value="Transparent" />
+
+        <Setter Property="Template">
+            <ControlTemplate TargetType="baseControls:FluentWindow">
+                <Panel>
+                    <ExperimentalAcrylicBorder IsHitTestVisible="True">
+                        <ExperimentalAcrylicBorder.Material>
+                            <ExperimentalAcrylicMaterial
+                                BackgroundSource="Digger"
+                                TintColor="Black"
+                                TintOpacity="1"
+                                MaterialOpacity="0.33" />
+                        </ExperimentalAcrylicBorder.Material>
+                    </ExperimentalAcrylicBorder>
+
+                    <Grid RowDefinitions="Auto,*">
+                        <Border Name="PART_CaptionBar"
+                                Height="36"
+                                Grid.Row="0"
+                                BorderThickness="0,0,0,1"
+                                BorderBrush="#20FFFFFF">
+                            <Grid ColumnDefinitions="Auto,*,Auto">
+                                <ContentPresenter Grid.Column="0"
+                                                  Content="{TemplateBinding TitleBarLeftSideContent}"
+                                                  VerticalAlignment="Stretch"
+                                                  HorizontalAlignment="Stretch"
+                                                  VerticalContentAlignment="{TemplateBinding VerticalTitleBarLeftSideContentAlignment}"
+                                                  HorizontalContentAlignment="{TemplateBinding HorizontalTitleBarLeftSideContentAlignment}" />
+
+                                <Grid Name="PART_TitleContainer"
+                                      Grid.Column="1"
+                                      Background="#01000000">
+                                    <TextBlock Opacity="0.88"
+                                               Text="{Binding $parent[Window].Title}"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center"
+                                               IsHitTestVisible="False" />
+                                </Grid>
+
+
+                                <CaptionButtons Name="PART_CaptionButtons"
+                                                Grid.Column="2"
+                                                VerticalAlignment="Stretch"
+                                                MinHeight="35"
+                                                MinWidth="140"
+                                                Foreground="White" />
+                            </Grid>
+                        </Border>
+
+                        <ContentPresenter Grid.Row="1"
+                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          Content="{TemplateBinding Content}" />
+                    </Grid>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+        
+        <Style Selector="^:maximized /template/ Border#PART_CaptionBar">
+            <Setter Property="Height" Value="43" />
+            <Setter Property="Padding" Value="7,7,7,0" />
+        </Style>
+        
+        <Style Selector="^:maximized">
+            <Setter Property="ExtendClientAreaTitleBarHeightHint" Value="43" />
+        </Style>
+    </Style>
+</Styles>
