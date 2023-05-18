@@ -51,8 +51,8 @@
                                 <CaptionButtons Name="PART_CaptionButtons"
                                                 Grid.Column="2"
                                                 VerticalAlignment="Stretch"
+                                                HorizontalAlignment="Right"
                                                 MinHeight="35"
-                                                MinWidth="140"
                                                 Foreground="White" />
                             </Grid>
                         </Border>

@@ -10,8 +10,8 @@ namespace Glitonea.Extensions
     {
         public static EnumDescription ToDescription(this Enum value)
         {
-            string description;
-            string hint = null;
+            string? description;
+            string? hint = null;
 
             var attributes = value!
                 .GetType()!
@@ -35,7 +35,7 @@ namespace Glitonea.Extensions
                 description = description.Substring(0, hintSeparatorPosition);
             }
 
-            return new() { Value = value, Description = description, Hint = hint };
+            return new(value) { Description = description, Hint = hint };
         }
     }
 }

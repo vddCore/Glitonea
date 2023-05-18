@@ -11,8 +11,8 @@ namespace Glitonea
     {
         private static bool _initialized;
         
-        private static IContainer Container { get; set; }
-        private static ContainerBuilder ContainerBuilder { get; set; }
+        private static IContainer? Container { get; set; }
+        private static ContainerBuilder? ContainerBuilder { get; set; }
         
         public static void Initialize()
         {

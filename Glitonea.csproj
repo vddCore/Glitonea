@@ -18,4 +18,10 @@
     <ItemGroup>
       <UpToDateCheckInput Remove="Controls\FluentWindow.axaml" />
     </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Controls\FluentWindow.cs">
+        <DependentUpon>FluentWindow.axaml</DependentUpon>
+      </Compile>
+    </ItemGroup>
 </Project>

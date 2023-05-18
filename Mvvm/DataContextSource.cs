@@ -15,7 +15,8 @@ namespace Glitonea.Mvvm
 
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
-            return ViewModelResolver.Instance.Resolve(ViewModelType);
+            return ViewModelResolver.Instance.Resolve(ViewModelType)
+                ?? throw new InvalidOperationException($"Unable to resoolve type '{ViewModelType.FullName}' as a viable DataContext.");
         }
     }
 }

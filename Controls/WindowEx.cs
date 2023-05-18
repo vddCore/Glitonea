@@ -2,7 +2,7 @@
 using Avalonia;
 using Avalonia.Controls;
 
-namespace Glitonea
+namespace Glitonea.Controls
 {
     public class WindowEx : Window
     {
@@ -24,7 +24,7 @@ namespace Glitonea
 
         protected void CenterScreen()
         {
-            var screen = Screens.ScreenFromVisual(this);
+            var screen = Screens.ScreenFromVisual(this)!;
 
             Position = new PixelPoint(
                 (int)(screen.Bounds.Width / 2 - Bounds.Width / 2),
@@ -34,7 +34,10 @@ namespace Glitonea
 
         protected void CenterOwner()
         {
-            var ownerPosition = ((Window)Owner)!.Position;
+            if (Owner == null)
+                return;
+            
+            var ownerPosition = ((Window)Owner).Position;
             var ownerSize = Owner.Bounds.Size;
 
             Position = new PixelPoint(

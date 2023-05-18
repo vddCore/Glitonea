@@ -4,7 +4,7 @@ namespace Glitonea.Mvvm
 {
     public abstract class SingleInstanceViewModelBase : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         protected virtual void OnPropertyChanged(string propertyName)
         {

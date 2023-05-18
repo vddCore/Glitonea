@@ -6,10 +6,10 @@ namespace Glitonea.Extensions
 {
     public static class ApplicationExtensions
     {
-        public static IClassicDesktopStyleApplicationLifetime GetDesktopLifetime(this Application app)
+        public static IClassicDesktopStyleApplicationLifetime? GetDesktopLifetime(this Application app)
             => app.ApplicationLifetime as IClassicDesktopStyleApplicationLifetime;
         
-        public static Window GetMainWindow(this Application app)
+        public static Window? GetMainWindow(this Application app)
         {
             var classicLifetime = app.GetDesktopLifetime();
             

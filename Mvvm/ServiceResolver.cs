@@ -5,8 +5,8 @@ namespace Glitonea.Mvvm
 {
     public class ServiceResolver
     {
-        private IContainer _container;
-        private static ServiceResolver _instance;
+        private IContainer? _container;
+        private static ServiceResolver? _instance;
 
         public static ServiceResolver Instance => _instance ?? (_instance = new ServiceResolver());
 
@@ -23,7 +23,7 @@ namespace Glitonea.Mvvm
             return _container.Resolve<T>();
         }
 
-        public object Resolve(Type t)
-            => _container.Resolve(t);
+        public object? Resolve(Type t)
+            => _container?.Resolve(t);
     }
 }
