@@ -9,6 +9,7 @@
 
     <Style Selector="baseControls|FluentWindow">
         <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{DynamicResource TextControlForeground}" />
 
         <Setter Property="Template">
             <ControlTemplate TargetType="baseControls:FluentWindow">
@@ -19,7 +20,7 @@
                                 BackgroundSource="Digger"
                                 TintColor="Black"
                                 TintOpacity="1"
-                                MaterialOpacity="0.33" />
+                                MaterialOpacity="0.44" />
                         </ExperimentalAcrylicBorder.Material>
                     </ExperimentalAcrylicBorder>
 
@@ -53,7 +54,7 @@
                                                 VerticalAlignment="Stretch"
                                                 HorizontalAlignment="Right"
                                                 MinHeight="35"
-                                                Foreground="White" />
+                                                Foreground="{DynamicResource TextControlForeground}" />
                             </Grid>
                         </Border>
 

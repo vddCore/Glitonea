@@ -3,7 +3,6 @@ using System.Reflection;
 using Autofac;
 using Glitonea.Mvvm;
 using Glitonea.Mvvm.Modules;
-using Microsoft.CodeAnalysis;
 
 namespace Glitonea
 {

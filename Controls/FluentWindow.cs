@@ -158,6 +158,12 @@ namespace Glitonea.Controls
 
             if (_maximizeButton != null)
                 _maximizeButton.IsVisible = ShowMaximizeButton;
+
+            if (_minimizeButton != null)
+                _minimizeButton.IsVisible = ShowMinimizeButton;
+
+            if (_closeButton != null)
+                _closeButton.IsVisible = ShowCloseButton;
         }
 
         private void OnTitleContainerPointerPressed(object? sender, PointerPressedEventArgs e)
@@ -166,7 +172,7 @@ namespace Glitonea.Controls
 
             if (properties.IsLeftButtonPressed)
             {
-                if (e.ClickCount == 2)
+                if (e.ClickCount == 2 && ShowMaximizeButton)
                 {
                     WindowState = WindowState == WindowState.Maximized
                         ? WindowState.Normal
