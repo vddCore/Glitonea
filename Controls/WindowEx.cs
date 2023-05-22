@@ -27,8 +27,8 @@ namespace Glitonea.Controls
             var screen = Screens.ScreenFromVisual(this)!;
 
             Position = new PixelPoint(
-                (int)(screen.Bounds.Width / 2 - Bounds.Width / 2),
-                (int)(screen.Bounds.Height / 2 - Bounds.Height / 2)
+                (int)((screen.Bounds.Width / 2 - Bounds.Width / 2) * screen.Scaling),
+                (int)((screen.Bounds.Height / 2 - Bounds.Height / 2) * screen.Scaling)
             );
         }
 
@@ -37,12 +37,13 @@ namespace Glitonea.Controls
             if (Owner == null)
                 return;
             
+            var screen = Screens.ScreenFromVisual(this)!;
             var ownerPosition = ((Window)Owner).Position;
             var ownerSize = Owner.Bounds.Size;
 
             Position = new PixelPoint(
-                ownerPosition.X + (int)(ownerSize.Width / 2 - Bounds.Width / 2),
-                ownerPosition.Y + (int)(ownerSize.Height / 2 - Bounds.Height / 2)
+                (int)(ownerPosition.X + (ownerSize.Width / 2 - Bounds.Width / 2) * screen.Scaling),
+                (int)(ownerPosition.Y + (ownerSize.Height / 2 - Bounds.Height / 2) * screen.Scaling)
             );
         }
     }
