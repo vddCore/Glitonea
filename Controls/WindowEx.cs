@@ -16,21 +16,21 @@ namespace Glitonea.Controls
                     CenterOwner();
                     break;
                 
-                case WindowStartupLocation.CenterScreen:
-                    CenterScreen();
-                    break;
+                // case WindowStartupLocation.CenterScreen:
+                //     CenterScreen();
+                //     break;
             }
         }
 
-        protected void CenterScreen()
-        {
-            var screen = Screens.ScreenFromVisual(this)!;
-
-            Position = new PixelPoint(
-                (int)((screen.Bounds.Width / 2 - Bounds.Width / 2) * screen.Scaling),
-                (int)((screen.Bounds.Height / 2 - Bounds.Height / 2) * screen.Scaling)
-            );
-        }
+        // protected void CenterScreen()
+        // {
+        //     var screen = Screens.ScreenFromVisual(this)!;
+        //
+        //     Position = new PixelPoint(
+        //         (int)((screen.Bounds.Width / 2 - Bounds.Width / 2) * screen.Scaling),
+        //         (int)((screen.Bounds.Height / 2 - Bounds.Height / 2) * screen.Scaling)
+        //     );
+        // }
 
         protected void CenterOwner()
         {
