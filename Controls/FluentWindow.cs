@@ -11,10 +11,8 @@ using Avalonia.Styling;
 
 namespace Glitonea.Controls
 {
-    public class FluentWindow : WindowEx, IStyleable
+    public class FluentWindow : WindowEx
     {
-        Type IStyleable.StyleKey => typeof(FluentWindow);
-
         private Control? _titleContainer;
 
         private Button? _maximizeButton;
@@ -24,6 +22,8 @@ namespace Glitonea.Controls
 
         private CompositeDisposable _disposables;
 
+        protected override Type StyleKeyOverride => typeof(FluentWindow);
+        
         public static readonly StyledProperty<object> TitleBarLeftSideContentProperty =
             AvaloniaProperty.Register<FluentWindow, object>(
                 nameof(TitleBarLeftSideContent)
@@ -92,7 +92,13 @@ namespace Glitonea.Controls
 
         public FluentWindow()
         {
-            TransparencyLevelHint = WindowTransparencyLevel.AcrylicBlur;
+            TransparencyLevelHint = new[]
+            {
+                WindowTransparencyLevel.AcrylicBlur,
+                WindowTransparencyLevel.Mica,
+                WindowTransparencyLevel.Blur
+            };
+            
             ExtendClientAreaToDecorationsHint = true;
             ExtendClientAreaChromeHints = ExtendClientAreaChromeHints.NoChrome;
             ExtendClientAreaTitleBarHeightHint = 36;
