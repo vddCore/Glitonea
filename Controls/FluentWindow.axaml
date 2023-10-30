@@ -1,6 +1,19 @@
 ﻿<Styles xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:baseControls="clr-namespace:Glitonea.Controls">
+    <Styles.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <SolidColorBrush x:Key="CaptionBarBorderBrush" Color="#20000000" />
+                </ResourceDictionary>
+                
+                <ResourceDictionary x:Key="Dark">
+                    <SolidColorBrush x:Key="CaptionBarBorderBrush" Color="#20FFFFFF" />
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+        </ResourceDictionary>
+    </Styles.Resources>
     <Design.PreviewWith>
         <Border Padding="20">
             <baseControls:FluentWindow />
@@ -8,7 +21,7 @@
     </Design.PreviewWith>
 
     <Style Selector="baseControls|FluentWindow">
-        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Background" Value="#66FFFFFF" />
         <Setter Property="Foreground" Value="{DynamicResource TextControlForeground}" />
 
         <Setter Property="Template">
@@ -17,19 +30,20 @@
                     <ExperimentalAcrylicBorder IsHitTestVisible="True">
                         <ExperimentalAcrylicBorder.Material>
                             <ExperimentalAcrylicMaterial
-                                BackgroundSource="Digger"
-                                TintColor="Black"
+                                BackgroundSource="None"
+                                TintColor="{DynamicResource ThemeBackgroundColor}"
                                 TintOpacity="1"
                                 MaterialOpacity="0.44" />
                         </ExperimentalAcrylicBorder.Material>
                     </ExperimentalAcrylicBorder>
 
-                    <Grid RowDefinitions="Auto,*">
+                    <Grid RowDefinitions="Auto,*"
+                          Background="{TemplateBinding Background}">
                         <Border Name="PART_CaptionBar"
                                 Height="36"
                                 Grid.Row="0"
                                 BorderThickness="0,0,0,1"
-                                BorderBrush="#20FFFFFF">
+                                BorderBrush="{DynamicResource CaptionBarBorderBrush}">
                             <Grid ColumnDefinitions="Auto,*,Auto">
                                 <ContentPresenter Grid.Column="0"
                                                   Content="{TemplateBinding TitleBarLeftSideContent}"

@@ -6,6 +6,7 @@ using Avalonia.Controls.Chrome;
 using Avalonia.Controls.Primitives;
 using Avalonia.Input;
 using Avalonia.Layout;
+using Avalonia.Media;
 using Avalonia.Platform;
 using Avalonia.Styling;
 
@@ -103,6 +104,9 @@ namespace Glitonea.Controls
             ExtendClientAreaChromeHints = ExtendClientAreaChromeHints.NoChrome;
             ExtendClientAreaTitleBarHeightHint = 36;
 
+            PlatformSettings.ColorValuesChanged += PlatformSettings_ColorValuesChanged;
+            UpdateColors(PlatformSettings.GetColorValues());
+            
             _disposables = new CompositeDisposable()
             {
                 this.GetObservable(WindowStateProperty)
@@ -135,6 +139,23 @@ namespace Glitonea.Controls
                             _closeButton.IsVisible = x;
                     })
             };
+        }
+
+        private void PlatformSettings_ColorValuesChanged(object sender, PlatformColorValues e)
+        {
+            UpdateColors(e);
+        }
+
+        private void UpdateColors(PlatformColorValues colorValues)
+        {
+            if (colorValues.ThemeVariant == PlatformThemeVariant.Dark)
+            {
+                Background = new SolidColorBrush(0x88000000);
+            }
+            else
+            {
+                Background = new SolidColorBrush(0x66FFFFFF);
+            }
         }
 
         protected override void OnApplyTemplate(TemplateAppliedEventArgs e)
