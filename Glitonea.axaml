@@ -1,7 +1,6 @@
-<Styles xmlns="https://github.com/avaloniaui"
+<ResourceDictionary x:Class="Glitonea.Glitonea"
+                    xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:converters="clr-namespace:Glitonea.Mvvm.Converters">
-    <Styles.Resources>
-        <converters:EnumDescriptionConverter x:Key="EnumDescriptionConverter" />
-    </Styles.Resources>
-</Styles>
+    <converters:EnumDescriptionConverter x:Key="EnumDescriptionConverter" />
+</ResourceDictionary>

@@ -1,17 +1,24 @@
 using System;
 using System.Reflection;
 using Autofac;
+using Avalonia.Controls;
+using Avalonia.Markup.Xaml;
 using Glitonea.Mvvm;
 using Glitonea.Mvvm.Modules;
 
 namespace Glitonea
 {
-    internal static class Glitonea
+    public class Glitonea : ResourceDictionary
     {
         private static bool _initialized;
         
         private static IContainer? Container { get; set; }
         private static ContainerBuilder? ContainerBuilder { get; set; }
+
+        public Glitonea()
+        {
+            AvaloniaXamlLoader.Load(this);
+        }
         
         internal static void Initialize()
         {
