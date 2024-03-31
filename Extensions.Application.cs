@@ -2,9 +2,9 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 
-namespace Glitonea.Extensions
+namespace Glitonea
 {
-    public static class ApplicationExtensions
+    public static partial class Extensions
     {
         public static IClassicDesktopStyleApplicationLifetime? GetDesktopLifetime(this Application app)
             => app.ApplicationLifetime as IClassicDesktopStyleApplicationLifetime;

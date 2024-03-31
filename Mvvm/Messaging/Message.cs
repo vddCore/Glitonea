@@ -8,25 +8,6 @@ namespace Glitonea.Mvvm.Messaging
     {
         private static Dictionary<object, Dictionary<Type, MulticastDelegate>> _recipients = new();
 
-        public static void Subscribe<T>(object recipient, Action<T> handler)
-        {
-            if (!_recipients.ContainsKey(recipient))
-            {
-                _recipients.Add(recipient, new());
-            }
-
-            _recipients[recipient].Add(typeof(T), handler);
-        }
-
-        public static void Unsubscribe<T>(object recipient)
-        {
-            if (_recipients.ContainsKey(recipient))
-            {
-                if (_recipients[recipient].ContainsKey(typeof(T)))
-                    _recipients[recipient].Remove(typeof(T));
-            }
-        }
-
         public static void Broadcast<T>(T message) where T : Message
             => PushToSubscribers(message);
         
@@ -44,6 +25,25 @@ namespace Glitonea.Mvvm.Messaging
 
         public void BroadcastToType<U>()
             => PushToSubscribers(this, typeof(U));
+        
+        internal static void Subscribe<T>(object recipient, Action<T> handler)
+        {
+            if (!_recipients.ContainsKey(recipient))
+            {
+                _recipients.Add(recipient, new());
+            }
+
+            _recipients[recipient].Add(typeof(T), handler);
+        }
+
+        internal static void Unsubscribe<T>(object recipient)
+        {
+            if (_recipients.ContainsKey(recipient))
+            {
+                if (_recipients[recipient].ContainsKey(typeof(T)))
+                    _recipients[recipient].Remove(typeof(T));
+            }
+        }
 
         private static void PushToSubscribers(object message)
         {

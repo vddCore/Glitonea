@@ -4,9 +4,9 @@ using System.Globalization;
 using System.Linq;
 using Glitonea.Utilities;
 
-namespace Glitonea.Extensions
+namespace Glitonea
 {
-    public static class EnumExtensions
+    public static partial class Extensions
     {
         public static EnumDescription ToDescription(this Enum value)
         {
