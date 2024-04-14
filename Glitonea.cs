@@ -20,17 +20,20 @@ namespace Glitonea
             AvaloniaXamlLoader.Load(this);
         }
         
-        internal static void Initialize()
+        internal static void Initialize(Assembly[] sourceAssemblies)
         {
             if (_initialized)
                 throw new InvalidOperationException("Attempt to initialize Glitonea twice.");
 
-            var callingAssembly = Assembly.GetCallingAssembly();
-            
+
             ContainerBuilder = new ContainerBuilder();
-            ContainerBuilder.RegisterModule(new ViewModelModule(callingAssembly));
-            ContainerBuilder.RegisterModule(new ServiceModule(callingAssembly));
-            
+
+            foreach (var assembly in sourceAssemblies)
+            {
+                ContainerBuilder.RegisterModule(new ViewModelModule(assembly));
+                ContainerBuilder.RegisterModule(new ServiceModule(assembly));
+            }
+
             Container = ContainerBuilder.Build();
             ViewModelResolver.Instance.Initialize(Container);
             ServiceResolver.Instance.Initialize(Container);

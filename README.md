@@ -13,6 +13,7 @@ To use the MVVM capabilities:
 
 using Avalonia;
 using System;
+using System.Reflection;
 using Glitonea; // <-- Add this...
 
 namespace AvaloniaApp1
@@ -26,7 +27,7 @@ namespace AvaloniaApp1
         public static AppBuilder BuildAvaloniaApp()
             => AppBuilder.Configure<App>()
                 .UsePlatformDetect()
-                .UseGlitoneaFramework() // <-- ...and this. Doesn't matter at which point.
+                .UseGlitoneaFramework(Assembly.GetExecutingAssembly()) // <-- ...and this. Doesn't matter at which point.
                 .WithInterFont()
                 .LogToTrace();
     }
