@@ -26,6 +26,14 @@ namespace Glitonea.Mvvm
 
             return _container.Resolve<T>();
         }
+        
+        public T ResolveSingle<T>() where T: SingleInstanceViewModelBase
+        {
+            if (_container == null)
+                throw new InvalidOperationException("ViewModelResolver not initialized yet.");
+
+            return _container.Resolve<T>();
+        }
 
         public object? Resolve(Type t)
             => _container?.Resolve(t);
