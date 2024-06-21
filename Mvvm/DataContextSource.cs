@@ -1,22 +1,21 @@
 ﻿using System;
 using Avalonia.Markup.Xaml;
 
-namespace Glitonea.Mvvm
+namespace Glitonea.Mvvm;
+
+public class DataContextSource : MarkupExtension
 {
-    public class DataContextSource : MarkupExtension
+    [ConstructorArgument("viewModelType")]
+    public Type ViewModelType { get; set; }
+
+    public DataContextSource(Type viewModelType)
     {
-        [ConstructorArgument("viewModelType")]
-        public Type ViewModelType { get; set; }
+        ViewModelType = viewModelType;
+    }
 
-        public DataContextSource(Type viewModelType)
-        {
-            ViewModelType = viewModelType;
-        }
-
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            return ViewModelResolver.Instance.Resolve(ViewModelType)
-                ?? throw new InvalidOperationException($"Unable to resoolve type '{ViewModelType.FullName}' as a viable DataContext.");
-        }
+    public override object ProvideValue(IServiceProvider serviceProvider)
+    {
+        return ViewModelResolver.Instance.Resolve(ViewModelType)
+               ?? throw new InvalidOperationException($"Unable to resoolve type '{ViewModelType.FullName}' as a viable DataContext.");
     }
 }

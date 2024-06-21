@@ -1,6 +1,5 @@
-namespace Glitonea.Mvvm
+namespace Glitonea.Mvvm;
+
+public interface IService
 {
-    public interface IService
-    {
-    }
 }

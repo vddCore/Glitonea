@@ -1,15 +1,14 @@
+namespace Glitonea.Mvvm.Modules;
+
 using System.Reflection;
 using Module = Autofac.Module;
 
-namespace Glitonea.Mvvm.Modules
+internal abstract class GlitoneaModule : Module
 {
-    internal abstract class GlitoneaModule : Module
-    {
-        protected Assembly CallingAssembly { get; }
+    protected Assembly CallingAssembly { get; }
         
-        internal GlitoneaModule(Assembly callingAssembly)
-        {
-            CallingAssembly = callingAssembly;
-        }
+    internal GlitoneaModule(Assembly callingAssembly)
+    {
+        CallingAssembly = callingAssembly;
     }
 }
