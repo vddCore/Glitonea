@@ -8,20 +8,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Autofac" Version="8.0.0" />
-        
-        <PackageReference Include="Avalonia" Version="11.2.0" />
-        <PackageReference Include="Avalonia.Diagnostics" Version="11.2.0" />
+        <PackageReference Include="Autofac" Version="8.2.0" />
+        <PackageReference Include="Avalonia" Version="11.2.3" />
     </ItemGroup>
 
     <ItemGroup>
-      <UpToDateCheckInput Remove="Controls\FluentWindow.axaml" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Compile Update="Controls\FluentWindow.cs">
-        <DependentUpon>FluentWindow.axaml</DependentUpon>
-      </Compile>
       <Compile Update="Glitonea.cs">
         <DependentUpon>Glitonea.axaml</DependentUpon>
       </Compile>

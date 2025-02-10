@@ -8,9 +8,13 @@ using Glitonea.Mvvm.Modules;
 
 namespace Glitonea
 {
+    using System.Collections.Generic;
+
     public class Glitonea : ResourceDictionary
     {
         private static bool _initialized;
+
+        private static List<Action<ContainerBuilder>> _onContainerBuildingInvocationList = [];
         
         private static IContainer? Container { get; set; }
         private static ContainerBuilder? ContainerBuilder { get; set; }
@@ -18,6 +22,14 @@ namespace Glitonea
         public Glitonea()
         {
             AvaloniaXamlLoader.Load(this);
+        }
+
+        public static void RegisterContainerBuildingNotification(Action<ContainerBuilder> action)
+        {
+            if (_onContainerBuildingInvocationList.Contains(action))
+                return;
+            
+            _onContainerBuildingInvocationList.Add(action);
         }
         
         internal static void Initialize(Assembly[] sourceAssemblies)
@@ -34,7 +46,13 @@ namespace Glitonea
                 ContainerBuilder.RegisterModule(new ServiceModule(assembly));
             }
 
+            foreach (var subscriber in _onContainerBuildingInvocationList)
+            {
+                subscriber.Invoke(ContainerBuilder);
+            }
+            
             Container = ContainerBuilder.Build();
+            
             ViewModelResolver.Instance.Initialize(Container);
             ServiceResolver.Instance.Initialize(Container);
 
