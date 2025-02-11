@@ -22,7 +22,7 @@ public class ViewModelResolver
     public T Resolve<T>() where T: ViewModelBase
     {
         if (_container == null)
-            throw new InvalidOperationException("ViewModelResolver not initialized yet.");
+            throw new InvalidOperationException($"{nameof(ViewModelResolver)} not initialized yet.");
 
         return _container.Resolve<T>();
     }
@@ -30,7 +30,7 @@ public class ViewModelResolver
     public T ResolveSingle<T>() where T: SingleInstanceViewModelBase
     {
         if (_container == null)
-            throw new InvalidOperationException("ViewModelResolver not initialized yet.");
+            throw new InvalidOperationException($"{nameof(ViewModelResolver)} not initialized yet.");
 
         return _container.Resolve<T>();
     }

@@ -18,7 +18,7 @@ public class ServiceResolver
     public T Resolve<T>() where T: IService
     {
         if (_container == null)
-            throw new InvalidOperationException("Service resolver not initialized yet.");
+            throw new InvalidOperationException($"{nameof(ServiceResolver)} not initialized yet.");
 
         return _container.Resolve<T>();
     }

@@ -3,7 +3,7 @@
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Messaging;
+using global::Glitonea.Mvvm.Messaging;
 
 public abstract class ViewModelBase : INotifyPropertyChanged
 {

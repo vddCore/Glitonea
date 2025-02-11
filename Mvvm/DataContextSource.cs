@@ -16,6 +16,6 @@ public class DataContextSource : MarkupExtension
     public override object ProvideValue(IServiceProvider serviceProvider)
     {
         return ViewModelResolver.Instance.Resolve(ViewModelType)
-               ?? throw new InvalidOperationException($"Unable to resoolve type '{ViewModelType.FullName}' as a viable DataContext.");
+               ?? throw new InvalidOperationException($"Unable to resolve type '{ViewModelType.FullName}' as DataContext.");
     }
 }
