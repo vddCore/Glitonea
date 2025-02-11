@@ -1,7 +1,7 @@
-﻿using System;
-using Avalonia.Markup.Xaml;
+﻿namespace Glitonea.Mvvm;
 
-namespace Glitonea.Mvvm;
+using System;
+using Avalonia.Markup.Xaml;
 
 public class DataContextSource : MarkupExtension
 {
