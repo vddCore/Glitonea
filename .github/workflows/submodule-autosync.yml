@@ -9,11 +9,12 @@ on:
 env:
   CI_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+permissions: read-all
+
 jobs:   
   notify:
     name: 'Submodule Autosync Notification'
     runs-on: ubuntu-latest
-    permissions: write-all
       
     strategy:
       matrix:
