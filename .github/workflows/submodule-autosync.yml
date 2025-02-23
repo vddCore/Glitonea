@@ -22,11 +22,10 @@ jobs:
     steps:
     - name: Fetch Workflow IDs
       run: |
-        WORKFLOW_ID=$(curl -X GET -H "Authorization: token $CI_TOKEN" https://api.github.com/repos/${{ matrix.subscribers }}/actions/workflows)
+        WORKFLOW_ID=$(curl -X GET -H "Authorization: token ${{ secrets.GLITONEA_CI_TOKEN }}" https://api.github.com/repos/${{ matrix.subscribers }}/actions/workflows)
         echo "WORKFLOW_ID=$WORKFLOW_ID" >> $GITHUB_OUTPUT
     - name: Dispatch Notifications
       env:
-        CI_TOKEN: ${{ secrets.GLITONEA_CI_TOKEN }}
         PARENT_BRANCH: master
       run: |
-        curl -fL --retry 3 -X POST -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${{ env.CI_TOKEN }}" https://api.github.com/repos/${{ matrix.subscribers }}/actions/workflows/${{ env.WORKFLOW_ID }}/dispatches -d '{"ref":"${{ env.PARENT_BRANCH }}"}'
+        curl -fL --retry 3 -X POST -H "Accept: application/vnd.github.v3+json" -H "Authorization: token ${{ secrets.GLITONEA_CI_TOKEN }}" https://api.github.com/repos/${{ matrix.subscribers }}/actions/workflows/${{ env.WORKFLOW_ID }}/dispatches -d '{"ref":"${{ env.PARENT_BRANCH }}"}'
