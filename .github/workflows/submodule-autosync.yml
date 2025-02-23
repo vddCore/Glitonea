@@ -13,8 +13,8 @@ jobs:
       
     strategy:
       matrix:
-        subscribers: ['Glitonea.DesktopApp']
-        branches: ['master']
+        subscribers: [Glitonea.DesktopApp]
+        branches: [master]
 
     defaults:
       run:
@@ -28,8 +28,8 @@ jobs:
         script: |
           github.rest.actions.createWorkflowDispatch({
             owner: context.repo.owner,
-            repo: ${{ matrix.subscribers }},
+            repo: '${{ matrix.subscribers }}',
             workflow_id: 'submodule-autosync.yml',
-            ref: ${{ matrix.branches }}
+            ref: '${{ matrix.branches }}'
           })
       
