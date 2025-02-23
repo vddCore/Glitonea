@@ -28,7 +28,7 @@ jobs:
       id: fetch-workflow
       run: |
         curl -X GET -H "Authorization: token ${{ env.CI_TOKEN }}" https://api.github.com/repos/${{ matrix.subscribers }}/actions/workflows >> api_response.json
-        WORKFLOW_ID=$(cat api_response.json | jq -r "workflows[0].id")
+        WORKFLOW_ID=$(cat api_response.json | jq -r ".workflows[0].id")
         echo "WORKFLOW_ID=$WORKFLOW_ID" >> $GITHUB_OUTPUT
         
     - name: Dispatch Notifications
