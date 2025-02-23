@@ -13,6 +13,7 @@ jobs:
   notify:
     name: 'Submodule Autosync Notification'
     runs-on: ubuntu-latest
+    permissions: write-all
       
     strategy:
       matrix:
