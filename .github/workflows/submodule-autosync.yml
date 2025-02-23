@@ -27,7 +27,7 @@ jobs:
         retries: 3
         script: |
           github.rest.actions.createWorkflowDispatch({
-            owner: context.repo.owner
+            owner: context.repo.owner,
             repo: ${{ matrix.subscribers }},
             workflow_id: 'submodule-autosync.yml'
             ref: ${{ matrix.branches }}
