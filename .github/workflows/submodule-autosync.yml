@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 env:
-  CI_TOKEN: ${{ secrets.GLITONEA_CI_TOKEN }}
+  CI_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:   
   notify:
