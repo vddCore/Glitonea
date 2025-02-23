@@ -13,8 +13,8 @@ jobs:
       
     strategy:
       matrix:
-        subscribers: [Glitonea.DesktopApp]
-        branches: [master]
+        subscribers: ['Glitonea.DesktopApp']
+        branches: ['master']
 
     defaults:
       run:
