@@ -10,12 +10,5 @@ public static partial class Extensions
         => app.ApplicationLifetime as IClassicDesktopStyleApplicationLifetime;
         
     public static Window? GetMainWindow(this Application app)
-    {
-        var classicLifetime = app.GetDesktopLifetime();
-            
-        if (classicLifetime == null)
-            return null;
-
-        return classicLifetime.MainWindow;
-    }
+        => app.GetDesktopLifetime()?.MainWindow;
 }

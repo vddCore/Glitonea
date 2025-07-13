@@ -126,20 +126,33 @@ namespace AvaloniaApp1
     public record SomethingHappenedMessage : Message;
     public record SomethingElseHappenedMessage(string What) : Message;
     
+    /**
+     * If you want to exclude a class from being analyzed
+     * you can decorate your ViewModel with this attrtibute. 
+     **/
+    [DisableMessageHandlerAutoRegistration]
     public MainWindowViewModel : ViewModelBase
     {
         public MainWindowViewModel()
         {
+            /* Can do this like a caveman. */
             Subscribe<SomethingHappenedMessage>(SomethingHappenedHandler);
         }
         
-        public void DoSomethingElse()
+        private void SomethingHappenedHandler(SomethingHappenedMessage m)
         {
-            new SomethingElseHappenedMessage("unga bunga")
+            Console.WriteLine("unga bunga");
+        }
+        
+        public void DoSomething()
+        {
+            new SomethingHappenedMessage()
                 .Broadcast();
         }
         
-        private void SomethingHappenedHandler(SomethingHappenedMessage m)
+        /* Or you can use the shiny, civilized way. */
+        [MessageHandler]
+        private void SomethingElseHappenedHandler(SomethingElseHappenedMessage m)
         {
         }
     }

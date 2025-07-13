@@ -6,7 +6,7 @@ using System.Linq;
 
 public abstract record Message
 {
-    private static Dictionary<object, Dictionary<Type, MulticastDelegate>> _recipients = new();
+    private static readonly Dictionary<object, Dictionary<Type, MulticastDelegate>> _recipients = [];
 
     public static void Broadcast<T>(T message) where T : Message
         => PushToSubscribers(message);

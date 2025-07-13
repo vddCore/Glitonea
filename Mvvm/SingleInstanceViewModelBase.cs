@@ -16,7 +16,5 @@ public abstract class SingleInstanceViewModelBase : INotifyPropertyChanged
         => Message.Unsubscribe<T>(this);
         
     protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = "")
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
+        => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 }
