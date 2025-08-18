@@ -25,14 +25,6 @@ jobs:
       - name: Build
         run: dotnet build --no-restore --configuration Release
 
-      - name: Pack NuGet package
-        run: dotnet pack --no-build --configuration Release --output ./nupkg
-
-      - name: Publish NuGet package
-        uses: nuget/setup-nuget@v2
-        with:
-          nuget-api-key: ${{ secrets.NUGET_API_KEY }}
-
       - name: Publish to NuGet
         uses: tedd/publish-nuget-neo@v1.0.2
         with:
