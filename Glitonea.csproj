@@ -24,7 +24,7 @@
 
   <ItemGroup>
     <None Include="README.nuget.md" Pack="true" PackagePath="\"/>
-    <None Include="Resources\nugeticon.png" Pack="true" PackagePath="\"/>
+    <None Include="Assets\nugeticon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
   
   <ItemGroup>
