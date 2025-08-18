@@ -33,7 +33,13 @@ jobs:
         with:
           nuget-api-key: ${{ secrets.NUGET_API_KEY }}
 
+      - name: Get project version
+        id: package_version
+        uses: KageKirin/get-csproj-version@v0
+        with:
+          file: Glitonea.csproj
+
       - name: Push package to NuGet
         run: |
-          dotnet nuget push ./nupkg/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+          dotnet nuget push ./nupkg/Glitonea.${{ steps.package_version.version }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
 
