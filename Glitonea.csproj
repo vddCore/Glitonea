@@ -4,12 +4,32 @@
     <LangVersion>latest</LangVersion>
     <Platforms>AnyCPU</Platforms>
     <Nullable>enable</Nullable>
-    <Version>4.2.0</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <NoWarn>CS1591</NoWarn>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <PackageId>Glitonea</PackageId>
+    <Version>4.2.1</Version>
+    <Author>vddCore</Author>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/vddCore/Glitonea</RepositoryUrl>
+    <PackageIcon>nugeticon.png</PackageIcon>
+    <PackageTags>mvvm;mvvm-framework;avalonia</PackageTags>
+    <PackageLicenseExpression>EUPL-1.2</PackageLicenseExpression>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageReadmeFile>README.nuget.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="README.nuget.md" Pack="true" PackagePath="\"/>
+    <None Include="Resources\nugeticon.png" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+  
+  <ItemGroup>
     <PackageReference Include="Autofac" Version="8.3.0" />
-    <PackageReference Include="Avalonia" Version="11.3.2" />
+    <PackageReference Include="Avalonia" Version="11.3.4" />
   </ItemGroup>
 
   <ItemGroup>
