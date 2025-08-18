@@ -41,5 +41,5 @@ jobs:
 
       - name: Push package to NuGet
         run: |
-          dotnet nuget push ./nupkg/Glitonea.${{ steps.package_version.version }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+          dotnet nuget push ./nupkg/Glitonea.${{ steps.test.package_version.version }}.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
 
