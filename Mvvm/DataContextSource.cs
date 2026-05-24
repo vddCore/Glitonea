@@ -2,6 +2,7 @@
 
 using System;
 using Avalonia.Markup.Xaml;
+using Avalonia.Metadata;
 
 public class DataContextSource : MarkupExtension
 {
